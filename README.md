@@ -1,4 +1,4 @@
-# Numero
+# Numero-Go
 
 [![Build Status](https://travis-ci.org/faridgh1991/Numero.svg?branch=master)](https://travis-ci.org/faridgh1991/Numero)
 
