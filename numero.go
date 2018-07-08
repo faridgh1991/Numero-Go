@@ -1,3 +1,5 @@
+// A micro library for converting non-english UTF8 digits. (like ۱=1, ۲=2) .
+// Almost all numbers defined in Unicode is supported in Numero.
 package numero
 
 import (
