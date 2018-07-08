@@ -5,7 +5,8 @@ import (
 	"strings"
 )
 
-var zero_starts = [...]rune{
+// zero character in diffrent languages
+var zeroStarts = [...]rune{
 	'0', '٠', '۰', '߀', '०', '০', '੦', '૦', '୦',
 	'௦', '౦', '೦', '൦', '෦', '๐', '໐', '༠', '၀',
 	'႐', '០', '᠐', '᥆', '᧐', '᪀', '᪐', '᭐', '᮰',
@@ -14,31 +15,35 @@ var zero_starts = [...]rune{
 	'𑙐', '𑛀', '𑜰', '𑣠', '𑱐', '𑵐', '𖩠', '𖭐', '𝟎',
 	'𝟘', '𝟢', '𝟬', '𝟶', '𞥐'}
 
-const zero_code = 48
+// english zerro character code
+const zeroCode = 48
 
-func isDigit(char rune) (bool, int) {
-	for _, start := range zero_starts {
-		if s := rune(start); char >= s && char <= s+9 {
-			return true, int(char - s)
+// check character is digit or not and if true return integer value of character
+func IsDigit(char rune) (bool, int) {
+	for _, zero := range zeroStarts {
+		if char >= zero && char <= zero+9 {
+			return true, int(char - zero)
 		}
 	}
 	return false, -1
 }
 
+// Checking if a string is all numbers
 func DigitOnly(str string) bool {
 	for _, c := range str {
-		if ok, _ := isDigit(c); !ok {
+		if ok, _ := IsDigit(c); !ok {
 			return false
 		}
 	}
 	return true
 }
 
+// Normalize all numbers in input string
 func Normalize(numberStr string) string {
 	normalized := ""
 	for _, char := range numberStr {
-		if ok, index := isDigit(char); ok {
-			normalized += string(zero_code + index)
+		if ok, index := IsDigit(char); ok {
+			normalized += string(zeroCode + index)
 		} else {
 			normalized += string(char)
 		}
@@ -46,6 +51,7 @@ func Normalize(numberStr string) string {
 	return normalized
 }
 
+// Convert numbers to Integer or Float based on input string
 func NormalizeAsNumber(numberStr string) (interface{}, error) {
 	if strings.Contains(numberStr, ".") {
 		return strconv.ParseFloat(Normalize(numberStr), 64)
@@ -54,11 +60,12 @@ func NormalizeAsNumber(numberStr string) (interface{}, error) {
 	}
 }
 
+//Strip all non numeric chars from a string
 func RemoveNonDigits(str string, exceptions ...string) string {
 	normalized := ""
 	for _, char := range str {
-		if ok, index := isDigit(char); ok {
-			normalized += string(zero_code + index)
+		if ok, index := IsDigit(char); ok {
+			normalized += string(zeroCode + index)
 		} else if len(exceptions) > 0 && strings.Contains(exceptions[0], string(char)) {
 			normalized += string(char)
 		}
