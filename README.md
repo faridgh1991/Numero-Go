@@ -1,6 +1,7 @@
 # Numero-Go
 
 [![Build Status](https://travis-ci.org/faridgh1991/Numero-Go.svg?branch=master)](https://travis-ci.org/faridgh1991/Numero-Go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/faridgh1991/Numero-Go)](https://goreportcard.com/report/github.com/faridgh1991/Numero-Go)
 [![GoDoc](https://godoc.org/github.com/faridgh1991/Numero-Go?status.svg)](https://godoc.org/github.com/faridgh1991/Numero-Go)
 
 
