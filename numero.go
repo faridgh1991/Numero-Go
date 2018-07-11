@@ -1,4 +1,4 @@
-// A micro library for converting non-english UTF8 digits. (like ۱=1, ۲=2) .
+// Package Numero is A micro library for converting non-english UTF8 digits. (like ۱=1, ۲=2) .
 // Almost all numbers defined in Unicode is supported in Numero.
 package numero
 
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// zero character in diffrent languages
+// zero character in different languages
 var zeroStarts = [...]rune{
 	'0', '٠', '۰', '߀', '०', '০', '੦', '૦', '୦',
 	'௦', '౦', '೦', '൦', '෦', '๐', '໐', '༠', '၀',
@@ -20,7 +20,7 @@ var zeroStarts = [...]rune{
 // english zerro character code
 const zeroCode = 48
 
-// check character is digit or not and if true return integer value of character
+// IsDigit to check character is digit or not and if true return integer value of character
 func IsDigit(char rune) (bool, int) {
 	for _, zero := range zeroStarts {
 		if char >= zero && char <= zero+9 {
@@ -30,7 +30,7 @@ func IsDigit(char rune) (bool, int) {
 	return false, -1
 }
 
-// Checking if a string is all numbers
+// DigitOnly Checking if a string is all numbers
 func DigitOnly(str string) bool {
 	for _, c := range str {
 		if ok, _ := IsDigit(c); !ok {
@@ -40,7 +40,7 @@ func DigitOnly(str string) bool {
 	return true
 }
 
-// Normalize all numbers in input string
+// Normalize to Normalize all numbers in input string
 func Normalize(numberStr string) string {
 	normalized := ""
 	for _, char := range numberStr {
@@ -53,7 +53,7 @@ func Normalize(numberStr string) string {
 	return normalized
 }
 
-// Convert numbers to Integer or Float based on input string
+// NormalizeAsNumber to Convert numbers to Integer or Float based on input string
 func NormalizeAsNumber(numberStr string) (interface{}, error) {
 	if strings.Contains(numberStr, ".") {
 		return strconv.ParseFloat(Normalize(numberStr), 64)
@@ -62,7 +62,7 @@ func NormalizeAsNumber(numberStr string) (interface{}, error) {
 	}
 }
 
-//Strip all non numeric chars from a string
+// RemoveNonDigits Strip all non numeric chars from a string
 func RemoveNonDigits(str string, exceptions ...string) string {
 	normalized := ""
 	for _, char := range str {

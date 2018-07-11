@@ -6,8 +6,8 @@ import (
 
 func TestDigitOnly(t *testing.T) {
 	tests := []struct {
-		input_text      string
-		expected_result bool
+		inputText      string
+		expectedResult bool
 	}{
 		{"abc", false},
 		{"1234", true},
@@ -16,16 +16,16 @@ func TestDigitOnly(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		result := DigitOnly(test.input_text)
-		if result != test.expected_result {
-			t.Errorf("Expected %v got %v.", test.expected_result, result)
+		result := DigitOnly(test.inputText)
+		if result != test.expectedResult {
+			t.Errorf("Expected %v got %v.", test.expectedResult, result)
 		}
 	}
 }
 
 func TestNormalize(t *testing.T) {
 	tests := []struct {
-		input_text, expected_text string
+		inputText, expectedText string
 	}{
 		{"abc", "abc"},
 		{"1234", "1234"},
@@ -34,17 +34,17 @@ func TestNormalize(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		result := Normalize(test.input_text)
-		if result != test.expected_text {
-			t.Errorf("Expected %v got %v.", test.expected_text, result)
+		result := Normalize(test.inputText)
+		if result != test.expectedText {
+			t.Errorf("Expected %v got %v.", test.expectedText, result)
 		}
 	}
 }
 
 func TestNormalizeAsNumber(t *testing.T) {
 	tests := []struct {
-		input_text      string
-		expected_number interface{}
+		inputText      string
+		expectedNumber interface{}
 	}{
 		{"1234", 1234},
 		{"12.34", 12.34},
@@ -53,18 +53,18 @@ func TestNormalizeAsNumber(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		result, _ := NormalizeAsNumber(test.input_text)
-		if result != test.expected_number {
-			t.Errorf("Expected %v got %v.", test.expected_number, result)
+		result, _ := NormalizeAsNumber(test.inputText)
+		if result != test.expectedNumber {
+			t.Errorf("Expected %v got %v.", test.expectedNumber, result)
 		}
 	}
 }
 
 func TestRemoveNonDigits(t *testing.T) {
 	tests := []struct {
-		input_text       string
-		input_exceptions string
-		expected_result  string
+		inputText       string
+		inputExceptions string
+		expesctedResult string
 	}{
 		{"1234abcd", "", "1234"},
 		{"12.34abcd", "", "1234"},
@@ -77,13 +77,13 @@ func TestRemoveNonDigits(t *testing.T) {
 
 	for _, test := range tests {
 		var result string
-		if test.input_exceptions != "" {
-			result = RemoveNonDigits(test.input_text, test.input_exceptions)
+		if test.inputExceptions != "" {
+			result = RemoveNonDigits(test.inputText, test.inputExceptions)
 		} else {
-			result = RemoveNonDigits(test.input_text)
+			result = RemoveNonDigits(test.inputText)
 		}
-		if result != test.expected_result {
-			t.Errorf("Expected %v got %v.", test.expected_result, result)
+		if result != test.expesctedResult {
+			t.Errorf("Expected %v got %v.", test.expesctedResult, result)
 		}
 	}
 }
