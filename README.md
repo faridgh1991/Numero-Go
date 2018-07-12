@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/faridgh1991/Numero-Go.svg?branch=master)](https://travis-ci.org/faridgh1991/Numero-Go)
 [![Go Report Card](https://goreportcard.com/badge/github.com/faridgh1991/Numero-Go)](https://goreportcard.com/report/github.com/faridgh1991/Numero-Go)
 [![GoDoc](https://godoc.org/github.com/faridgh1991/Numero-Go?status.svg)](https://godoc.org/github.com/faridgh1991/Numero-Go)
-
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/faridgh1991/Numero-Go/blob/master/LICENSE)
 
 A micro library for converting non-english UTF8 digits. (like ۱=1, ۲=2)
 
