@@ -5,6 +5,7 @@ package numero
 import (
 	"strconv"
 	"strings"
+	"unicode"
 )
 
 // zero character in different languages
@@ -17,14 +18,16 @@ var zeroStarts = [...]rune{
 	'𑙐', '𑛀', '𑜰', '𑣠', '𑱐', '𑵐', '𖩠', '𖭐', '𝟎',
 	'𝟘', '𝟢', '𝟬', '𝟶', '𞥐'}
 
-// english zerro character code
+// english zero character code
 const zeroCode = 48
 
-// IsDigit to check character is digit or not and if true return integer value of character
-func IsDigit(char rune) (bool, int) {
-	for _, zero := range zeroStarts {
-		if char >= zero && char <= zero+9 {
-			return true, int(char - zero)
+// Digit to check character is digit or not and if true return integer value of character
+func Digit(char rune) (bool, int) {
+	if unicode.IsNumber(char) {
+		for _, zero := range zeroStarts {
+			if char >= zero && char <= zero+9 {
+				return true, int(char - zero)
+			}
 		}
 	}
 	return false, -1
@@ -33,7 +36,7 @@ func IsDigit(char rune) (bool, int) {
 // DigitOnly Checking if a string is all numbers
 func DigitOnly(str string) bool {
 	for _, c := range str {
-		if ok, _ := IsDigit(c); !ok {
+		if ok, _ := Digit(c); !ok {
 			return false
 		}
 	}
@@ -44,7 +47,7 @@ func DigitOnly(str string) bool {
 func Normalize(numberStr string) string {
 	normalized := ""
 	for _, char := range numberStr {
-		if ok, index := IsDigit(char); ok {
+		if ok, index := Digit(char); ok {
 			normalized += string(zeroCode + index)
 		} else {
 			normalized += string(char)
@@ -66,7 +69,7 @@ func NormalizeAsNumber(numberStr string) (interface{}, error) {
 func RemoveNonDigits(str string, exceptions ...string) string {
 	normalized := ""
 	for _, char := range str {
-		if ok, index := IsDigit(char); ok {
+		if ok, index := Digit(char); ok {
 			normalized += string(zeroCode + index)
 		} else if len(exceptions) > 0 && strings.Contains(exceptions[0], string(char)) {
 			normalized += string(char)
