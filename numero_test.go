@@ -64,7 +64,7 @@ func TestRemoveNonDigits(t *testing.T) {
 	tests := []struct {
 		inputText       string
 		inputExceptions string
-		expesctedResult string
+		expectedResult  string
 	}{
 		{"1234abcd", "", "1234"},
 		{"12.34abcd", "", "1234"},
@@ -82,8 +82,8 @@ func TestRemoveNonDigits(t *testing.T) {
 		} else {
 			result = RemoveNonDigits(test.inputText)
 		}
-		if result != test.expesctedResult {
-			t.Errorf("Expected %v got %v.", test.expesctedResult, result)
+		if result != test.expectedResult {
+			t.Errorf("Expected %v got %v.", test.expectedResult, result)
 		}
 	}
 }

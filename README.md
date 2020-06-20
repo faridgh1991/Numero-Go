@@ -9,7 +9,7 @@ A micro library for converting non-english UTF8 digits. (like ۱=1, ۲=2)
 
 ## Supported languages
 
-Almost all numbers defined in Unicode is supported in Numero.
+Almost all numbers defined in Unicode are support in Numero.
 
 For more info on supported characters you can visit [here](http://www.fileformat.info/info/unicode/category/Nd/list.htm)
 

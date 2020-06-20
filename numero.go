@@ -45,15 +45,14 @@ func DigitOnly(str string) bool {
 
 // Normalize to Normalize all numbers in input string
 func Normalize(numberStr string) string {
-	normalized := ""
-	for _, char := range numberStr {
-		if ok, index := Digit(char); ok {
-			normalized += string(zeroCode + index)
-		} else {
-			normalized += string(char)
-		}
+	return strings.Map(normalizeRune, numberStr)
+}
+
+func normalizeRune(r rune) rune {
+	if ok, index := Digit(r); ok {
+		return rune(zeroCode + index)
 	}
-	return normalized
+	return r
 }
 
 // NormalizeAsNumber to Convert numbers to Integer or Float based on input string
