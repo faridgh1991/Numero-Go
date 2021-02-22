@@ -65,12 +65,12 @@ func NormalizeAsNumber(numberStr string) (interface{}, error) {
 }
 
 // RemoveNonDigits Strip all non numeric chars from a string
-func RemoveNonDigits(str string, exceptions ...string) string {
+func RemoveNonDigits(str string, exceptions ...rune) string {
 	normalized := ""
 	for _, char := range str {
 		if ok, index := Digit(char); ok {
-			normalized += string(zeroCode + index)
-		} else if len(exceptions) > 0 && strings.Contains(exceptions[0], string(char)) {
+			normalized += string(rune(zeroCode + index))
+		} else if len(exceptions) > 0 && exceptions[0] == char {
 			normalized += string(char)
 		}
 	}

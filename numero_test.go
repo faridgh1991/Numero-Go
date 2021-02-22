@@ -63,22 +63,22 @@ func TestNormalizeAsNumber(t *testing.T) {
 func TestRemoveNonDigits(t *testing.T) {
 	tests := []struct {
 		inputText       string
-		inputExceptions string
+		inputExceptions []rune
 		expectedResult  string
 	}{
-		{"1234abcd", "", "1234"},
-		{"12.34abcd", "", "1234"},
-		{"۱۲۳۴abcd", "", "1234"},
-		{"۱۲.۳۴abcd", "", "1234"},
+		{"1234abcd", []rune{}, "1234"},
+		{"12.34abcd", []rune{}, "1234"},
+		{"۱۲🙃۳۴abcd", []rune{}, "1234"},
+		{"۱۲.۳۴abcd", []rune{}, "1234"},
 
-		{"1234abcd", "b", "1234b"},
-		{"12.34abcd", "b", "1234b"},
+		{"1234abcd", []rune{'b'}, "1234b"},
+		{"12.34abcd", []rune{'b'}, "1234b"},
 	}
 
 	for _, test := range tests {
 		var result string
-		if test.inputExceptions != "" {
-			result = RemoveNonDigits(test.inputText, test.inputExceptions)
+		if len(test.inputExceptions) > 0 {
+			result = RemoveNonDigits(test.inputText, test.inputExceptions...)
 		} else {
 			result = RemoveNonDigits(test.inputText)
 		}
