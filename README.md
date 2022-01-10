@@ -4,6 +4,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/faridgh1991/Numero-Go)](https://goreportcard.com/report/github.com/faridgh1991/Numero-Go)
 [![GoDoc](https://godoc.org/github.com/faridgh1991/Numero-Go?status.svg)](https://godoc.org/github.com/faridgh1991/Numero-Go)
 [![license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/faridgh1991/Numero-Go/blob/master/LICENSE)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffaridgh1991%2FNumero-Go.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffaridgh1991%2FNumero-Go?ref=badge_shield)
 
 A micro library for converting non-english UTF8 digits. (like ۱=1, ۲=2)
 
@@ -69,3 +70,7 @@ result = numero.DigitOnly("1234567890.a")
 ```
 ## GoDoc
 [See godoc page](https://godoc.org/github.com/faridgh1991/Numero-Go).
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffaridgh1991%2FNumero-Go.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffaridgh1991%2FNumero-Go?ref=badge_large)
